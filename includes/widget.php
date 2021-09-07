@@ -1,0 +1,1 @@
+<h1>Some widget</h1>

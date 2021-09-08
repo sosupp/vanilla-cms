@@ -58,18 +58,21 @@
 
                 <hr>
 
+                <!-- comment form-->
+                <?php include "includes/show_post_comment.php";?>
 
-
-
-
-                </div>
+                <!-- comment form-->
+                <?php include "includes/comments.php";?>
+                
+                
+            </div>
               
 
             <!-- Blog Sidebar Widgets Column -->
             
             
             <div class="col-md-4">
-            <?php include "includes/sidebar.php";?>
+                <?php include "includes/sidebar.php";?>
             </div>
             
              

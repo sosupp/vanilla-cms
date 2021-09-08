@@ -11,7 +11,7 @@
         $post_image = $_FILES['post_image']['name'];
         $post_image_temp = $_FILES['post_image']['tmp_name'];
         $post_date = date('d-m-y');
-        $post_comment_count = 4;
+        $post_comment_count = 0;
 
         // moving image into directory
         move_uploaded_file($post_image_temp, "../images/$post_image");

@@ -16,6 +16,9 @@
 
 
     <tbody>
+        <?php delete_comment() ?>
+        <?php approve_comment() ?>
+        <?php unapprove_comment() ?>
         <?php comment_list() ?>
         
     </tbody>

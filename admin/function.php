@@ -303,14 +303,66 @@
                 echo "<td>{$post_title}</td>";
             }
 
-            echo "<td><a href='comments.php?delete={$id}'>Approve </a></td>";
-            echo "<td><a href='comments.php?delete={$id}'>Unapprove </a></td>";
+            echo "<td><a href='comments.php?approved={$id}'>Approve </a></td>";
+            echo "<td><a href='comments.php?unapproved={$id}'>Unapprove </a></td>";
             echo "<td><a href='comments.php?delete={$id}'>Delete </a></td>";
             echo "<td>{$date}</td>";
             echo "<tr>";
         }
-        
+    }
 
+    // show comment
+    function show_comment_for_post(){
+         
+    }
+
+     // approve comment
+     function approve_comment(){
+        global $connection;
+        if(isset($_GET['approved'])){
+            $comment_id = $_GET['approved'];
+
+            // query statement
+            $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $comment_id ";
+            $approve_comment = mysqli_query($connection, $query);
+             // checking success or failure
+            confirm_query($approve_comment);
+            header("Location: comments.php");
+        }
+    }
+
+    // unapprove comment
+    function unapprove_comment(){
+        global $connection;
+        if(isset($_GET['unapproved'])){
+            $comment_id = $_GET['unapproved'];
+
+            // query statement
+            $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $comment_id ";
+            $unapprove_comment = mysqli_query($connection, $query);
+             // checking success or failure
+            confirm_query($unapprove_comment);
+            header("Location: comments.php");
+        }
+    }
+
+    // Delete comment
+    function delete_comment(){
+        global $connection;
+        if(isset($_GET['delete'])){
+            // get post to delete with id
+            $comment_id = $_GET['delete'];
+
+            // query to send to DB
+            $query = "DELETE FROM comments WHERE comment_id = {$comment_id} ";
+
+            // delete: send query to DB
+            $delete = mysqli_query($connection, $query);
+
+            header("Location: comments.php");
+            // checking success or failure
+            confirm_query($delete);
+        }
     }
 
 ?>
